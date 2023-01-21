@@ -53,7 +53,7 @@ print('\n', y)
 # Splitting the dataset into the training set and test set
 ##########################################
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 print('\n', X_train)
 print('\n', X_test)
@@ -64,3 +64,17 @@ print('\n', y_test)
 # feature scaling makes all of the variables considered equally so one of the vars doesnt dominate the others
 # apply feature scaling after splitting the dataset into the training and test set
 # this is because the test set is supposed to be brand new to the model and we want to see how the model would work on new data
+# only need to be applied if we have features taking very different values
+# using standardisation is more general to use than normalisation so use standardisation more often
+# stadardisation produces values from -3 to +3
+##########################################
+# Feature scaling
+##########################################
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train[:, 3:] = sc.fit_transform(X_train[:, 3:]) # gets the mean and standard deviation and transforms it
+X_test[:, 3:] = sc.transform(X_test[:, 3:]) # applies the transformation to the test matrix
+
+print('\n', X_train)
+
+print('\n', X_test)
