@@ -50,6 +50,17 @@ y = le.fit_transform(y)
 print('\n', y)
 
 ##########################################
-# Encoding the Dependent Variable
+# Splitting the dataset into the training set and test set
 ##########################################
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
 
+print('\n', X_train)
+print('\n', X_test)
+print('\n', y_train)
+print('\n', y_test)
+
+
+# feature scaling makes all of the variables considered equally so one of the vars doesnt dominate the others
+# apply feature scaling after splitting the dataset into the training and test set
+# this is because the test set is supposed to be brand new to the model and we want to see how the model would work on new data
