@@ -47,3 +47,18 @@ plt.title('Salary vs Experience (Test set)')
 plt.xlabel('Years of Experience')
 plt.ylabel('Salary')
 plt.show()
+
+###############################################
+# Making a single prediction (ie the salary of an employee with 12 years experience)
+###############################################
+print(regressor.predict([[12]]))
+# the predicted salary is $138967.5
+# the feature is put in double [] because the predict method expects a 2D array
+
+###############################################
+# Getting the final linear regression equation with the values of the coefficients
+###############################################
+print(regressor.coef_) # prints: [9345.94244312]
+print(regressor.intercept_) # prints: 26816.192244031183
+
+# thus, the equation is: Salary = 9345.9x + 26816.19
