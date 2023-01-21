@@ -28,10 +28,12 @@ X[:, 1:3] = imputer.transform(X[:, 1:3])
 print('\n', X)
 
 ##########################################
-# Encoding the Independent Variable
+# Encoding the categorical data
 ##########################################
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
+
+# The dependent variable
+from sklearn.compose import ColumnTransformer 
+from sklearn.preprocessing import OneHotEncoder # use these for non-binary outcome (more than two categories)
 # column transformer args
 # 1. transformers = [(transformation_type, the name of the class that does the transformation, the indexes that are being transformed)]
 # 2. remainder = 'passthrough' means to ignore the other colums
@@ -39,6 +41,13 @@ ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0])], remaind
 X = np.array(ct.fit_transform(X))
 
 print('\n', X)
+
+# The independent variable
+from sklearn.preprocessing import LabelEncoder # use this for binary outcome (two categories)
+le = LabelEncoder()
+y = le.fit_transform(y)
+
+print('\n', y)
 
 ##########################################
 # Encoding the Dependent Variable
